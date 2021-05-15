@@ -1,3 +1,4 @@
+/database/mysql-data
 /vendor
 /.idea
 Homestead.json

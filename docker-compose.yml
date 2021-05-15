@@ -1,4 +1,4 @@
-version: '3.5'
+version: "3.5"
 
 services:
   lumen:
@@ -10,3 +10,18 @@ services:
     build: .
     command: php -S lumen:8000 -t public
     restart: always
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./database/mysql-data:/var/lib/mysql:rw
+volumes:
+  mysql-data:
