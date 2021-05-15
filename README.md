@@ -15,5 +15,5 @@ Part II:
 3. Build and run project with:
 
 ```
-docker-compose up --build
+docker-compose --env-file .env up --build
 ```
